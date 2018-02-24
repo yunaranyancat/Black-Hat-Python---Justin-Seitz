@@ -55,4 +55,19 @@ def main():
     #now spin up our listening socket
     server_loop(local_host,local_port,remote_host,remote_post,receive_first)
 
+def proxy_handler(client_socket,remote_host,remote_host,receive_first):
+
+    #connect to the remote host
+    remote_socket =  socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    remote_socket.connect((remote_host,remote_post))
+
+    #receive data from the remote end if necessary
+    if receive_first:
+
+        remote_buffer = receive_from(remote_socket)
+        hexdump(remote_buffer)
+
+        #
+
+
 main()
