@@ -75,5 +75,13 @@ def proxy_handler(client_socket,remote_host,remote_host,receive_first):
             print "[<==] Send /d bytes to localhost." % len(remote_buffer)
             client_socket.send(remote_buffer)
 
+    #now let's loop and read from local,
+        #send to remote, send to local
+    #rinse, wash, repeat
+    while True:
+
+            #read from local host
+            local_buffer = receive_from(client_socket)
+
 
 main()
